@@ -1,0 +1,18 @@
+Package: emaph
+Title: Ecological Momentary Assessment Datasets and Utility Functions
+Version: 0.0.0.9000
+Authors@R: person("Jeroen", "Ruwaard", email = "jeroen.ruwaard@ggzingeest.nl", 
+    role = c("aut", "cre"))
+Description: Provides example data of EMA research, and utility functions to
+    simulate and analyse EMA data.
+Depends: R (>= 3.4.2)
+Imports: tidyverse,
+    mgcv,
+    zoo
+License: file LICENCE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown,
+VignetteBuilder: knitr

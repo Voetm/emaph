@@ -1,0 +1,133 @@
+#' Data from the 'Critical Slowing Down'-Study.
+#'
+#' @description a dataset of a single participant, with a history of major
+#'      depressive disorder (MDD), whose daily life experience was monitored
+#'      over the course of 239 days.
+#'
+#' @format A data frame with 1476 observations on the following 85 variables:
+#' \describe{
+#'   \item{\code{date}}{Date of measurement}
+#'   \item{\code{phase}}{Various phases in experiment}
+#'   \item{\code{concentrat}}{Concentration of anti-depressant}
+#'   \item{\code{dayno}}{Day number in experiment}
+#'   \item{\code{beepno}}{Sequence of measurements within a day}
+#'   \item{\code{beeptime}}{Time of presentation of questionnaire}
+#'   \item{\code{resptime_s}}{Time at start questionnaire}
+#'   \item{\code{resptime_e}}{Time at end questionnaire}
+#'   \item{\code{resp_abort}}{Questionnaire aborted}
+#'   \item{\code{mood_relaxed}}{I feel relaxed}
+#'   \item{\code{mood_down}}{I feel down}
+#'   \item{\code{mood_irritat}}{I feel irritated}
+#'   \item{\code{mood_satisfi}}{I feel satisfied}
+#'   \item{\code{mood_lonely}}{I feel lonely}
+#'   \item{\code{mood_anxious}}{I feel anxious}
+#'   \item{\code{mood_enthus}}{I feel enthusiastic}
+#'   \item{\code{mood_suspic}}{I feel suspicious}
+#'   \item{\code{mood_cheerf}}{I feel cheerful}
+#'   \item{\code{mood_guilty}}{I feel guilty}
+#'   \item{\code{mood_doubt}}{I feel indecisive}
+#'   \item{\code{mood_strong}}{I feel strong}
+#'   \item{\code{pat_restl}}{I feel restless}
+#'   \item{\code{pat_agitate}}{I feel agitated}
+#'   \item{\code{pat_worry}}{I worry}
+#'   \item{\code{pat_concent}}{I can concentrate well}
+#'   \item{\code{se_selflike}}{I like myself}
+#'   \item{\code{se_ashamed}}{I am ashamed of myself}
+#'   \item{\code{se_selfdoub}}{I doubt myself}
+#'   \item{\code{se_handle}}{I can handle anything}
+#'   \item{\code{soc_who1}}{Who am I with?}
+#'   \item{\code{soc_enjoy_alone}}{I enjoy to be alone.}
+#'   \item{\code{soc_prefcomp}}{I prefer being in company.}
+#'   \item{\code{soc_who2}}{Who else am I with?}
+#'   \item{\code{soc_who3}}{And .. (who else in addition)}
+#'   \item{\code{soc_belong}}{I prefer being in company.}
+#'   \item{\code{soc_pleasant}}{I find this company pleasant.}
+#'   \item{\code{soc_prefalone}}{I prefer to be alone.}
+#'   \item{\code{soc_together}}{We are doing something together.}
+#'   \item{\code{phy_hungry}}{I am hungry.}
+#'   \item{\code{phy_tired}}{I am tired.}
+#'   \item{\code{phy_pain}}{I am pain.}
+#'   \item{\code{phy_dizzy}}{I feel dizzy.}
+#'   \item{\code{phy_drymouth}}{I have a dry mouth.}
+#'   \item{\code{phy_nauseous}}{I feel nauseous.}
+#'   \item{\code{phy_headache}}{I have a headache.}
+#'   \item{\code{phy_sleepy}}{I am sleepy.}
+#'   \item{\code{act_what1}}{What am I doing (right before the beep)?}
+#'   \item{\code{act_what2}}{What else are you doing?}
+#'   \item{\code{act_difficul}}{This (activity) requires effort.}
+#'   \item{\code{act_well}}{I am good at this}
+#'   \item{\code{act_enjoy}}{I like doing this.}
+#'   \item{\code{phy_physact}}{From the last beep onwards I was physically active}
+#'   \item{\code{event_pleas}}{This event was...}
+#'   \item{\code{event_import}}{This event was...}
+#'   \item{\code{event_cause}}{This event was ...}
+#'   \item{\code{event_concern}}{This event mainly had to do with ...}
+#'   \item{\code{event_freq}}{This event usually happens ...}
+#'   \item{\code{event_pertain}}{This event pertained to ...}
+#'   \item{\code{event_disturb}}{This beep disturbs me.}
+#'   \item{\code{evn_ordinary}}{I found this an ordinary day.}
+#'   \item{\code{evn_niceday}}{I found this a nice day.}
+#'   \item{\code{evn_inflmood}}{Filling in this questionnaire influenced my mood.}
+#'   \item{\code{evn_pager}}{Filling in this questionnaire influenced my mood.}
+#'   \item{\code{evn_work}}{I worked/studied today.}
+#'   \item{\code{evn_med}}{I took my medication today.}
+#'   \item{\code{mor_asleep}}{I took my medication today.}
+#'   \item{\code{mor_nrwakeup}}{How often did I wake up last night?}
+#'   \item{\code{mor_lieawake}}{How long did I lie awake this morning before I got up?}
+#'   \item{\code{mor_qualsleep}}{I slept well.}
+#'   \item{\code{mor_feellike}}{I am looking forward to this day.}
+#'   \item{\code{mor_med}}{I took my medication yesterday.}
+#'   \item{\code{SCL.90.R.14}}{How much were you bothered by feeling low in energy or slowed down?}
+#'   \item{\code{SCL.90.R.20}}{How much were you bothered by crying easily?}
+#'   \item{\code{SCL.90.R.22}}{How much were you bothered by feeling of being trapped or caught?}
+#'   \item{\code{SCL.90.R.5}}{How much were you bothered by loss of sexual interest or pleasure?}
+#'   \item{\code{SCL.90.R.29}}{How much were you bothered by feeling lonely?}
+#'   \item{\code{SCL.90.R.26}}{How much were you bothered by blaming yourself for things??}
+#'   \item{\code{SCL.90.R.15}}{How much were you bothered by thoughts of ending your life?}
+#'   \item{\code{SCL.90.R.30}}{How much were you bothered by feeling blue?}
+#'   \item{\code{SCL.90.R.31}}{How much were you bothered by worrying too much about things?}
+#'   \item{\code{SCL.90.R.32}}{How much were you bothered by feeling no interest in things?}
+#'   \item{\code{SCL.90.R.54}}{How much were you bothered by feeling hopeless about the future?}
+#'   \item{\code{SCL.90.R.71}}{How much were you bothered by feeling everything is an effort?}
+#'   \item{\code{SCL.90.R.79}}{How much were you bothered by feelings of worthlessness?}
+#'   \item{\code{dep}}{Average score on SCL-90-R items.}
+#' }
+#'
+#' @details Data retrieved from single participant.
+#'
+#' Several columns were recoded from -3 to 3 scale to 1 to 7 scale.
+#'
+#' dayno was recoded: the original data contained day number in the year (i.e.,
+#' dayno == 1 for january 1st. The codebook states that dayno codes "the day
+#' number in the experiment". The variable was recalculated as the number of
+#' days since the first assessment, to more accurately reflect the codebook
+#' meaning.
+#'
+#' @source \url{https://osf.io/j4fg8/}
+#'
+#' @docType data
+#' @keywords datasets
+#'
+#' @references
+#' Kossakowski, J. J., Groot, P. C., Haslbeck, J. M. B., Borsboom, D., &
+#' Wichers, M. (2017). Data from “Critical Slowing Down as a Personalized
+#' Early Warning Signal for Depression.” Journal of Open Psychology Data, 5(1).
+#' \url{https://doi.org/10.5334/jopd.29}
+#'
+#'
+#' van de Leemput, I. A., Wichers, M., Cramer, A. O. J., Borsboom, D.,
+#' Tuerlinckx, F., Kuppens, P., ..., Scheffer, M. (2014). Critical slowing down
+#' as early warning for the onset and termination of depression.
+#' Proceedings of the National Academy of Sciences, 111(1), 87–92.
+#' \url{https://doi.org/10.1073/pnas.1312114110}
+#'
+#' Wichers, M., & Groot, P. C. (2016). Critical Slowing Down as a
+#' Personalized Early Warning Signal for Depression. Psychotherapy and
+#' Psychosomatics. \url{https://doi.org/10.1159/000441458}
+#'
+#' @examples
+#' # number of assessments
+#' nrow(csd)
+#'
+"csd"
+
