@@ -12,6 +12,8 @@ temp <- "data-raw/csd/ESMdata.zip"
 
 con <- unz(temp, "ESMdata/ESMdata.csv")
 d <- read_csv(con, col_names = TRUE)
+
+# uncomment next line if you re-downloaded the data
 #unlink(temp)
 
 
@@ -19,10 +21,6 @@ d <- read_csv(con, col_names = TRUE)
 
 # remove rowcounter
 d <- d[-1]
-
-# date
-d$date <- as.Date(d$date, format = "%d/%m/%y")
-attr(d$date, "label") <- "Date of measurement"
 
 
 # phase
@@ -43,14 +41,19 @@ attr(d$phase, "label") <- "Various phases in experiment"
 attr(d$concentrat, "label") <- "Concentration of anti-depressant"
 
 
+# Time -----------
+
+# date
+# (define this first, so that dayno can be properly re-calculated)
+d$date <- as.Date(d$date, format = "%d/%m/%y")
+attr(d$date, "label") <- "Date of measurement"
+
 # dayno
 attr(d$dayno, "label") <- "Day number in experiment"
 d$dayno <- as.numeric(difftime(d$date, d$date[1], unit = "days")) + 1
 
-
 # beepno
 attr(d$beepno, "label") <- "Sequence of measurements within a day"
-
 
 # beeptime
 d$beeptime <- as.hms(d$beeptime)
@@ -73,6 +76,8 @@ d$resp_abort <- factor(d$resp_abort,
                        labels = c("no", "yes"))
 attr(d$resp_abort, "label") <- "Questionnaire aborted"
 
+
+# Mood items -----------
 
 # mood_relaxed
 d$mood_relaxed <- labelled(d$mood_relaxed,
@@ -150,6 +155,8 @@ d$mood_strong <- labelled(d$mood_strong,
 attr(d$mood_strong, "label") <- "I feel strong"
 
 
+
+
 # pat_restl
 d$pat_restl <- labelled(d$pat_restl,
                         labels = c("not" = 1, "very" = 7))
@@ -197,6 +204,8 @@ d$se_handle <- labelled(d$se_handle,
                           labels = c("not" = 1, "very" = 7))
 attr(d$se_handle, "label") <- "I can handle anything"
 
+
+# Social items -----------
 
 # soc_who1
 d$soc_who1 <- factor(d$soc_who1,
@@ -291,6 +300,8 @@ d$soc_together <- labelled(d$soc_together,
 attr(d$soc_together, "label") <- "We are doing something together."
 
 
+# Physical items -----------
+
 # phy_hungry
 d$phy_hungry <- labelled(d$phy_hungry,
                            labels = c("not" = 1, "very" = 7))
@@ -339,6 +350,7 @@ d$phy_sleepy <- labelled(d$phy_sleepy,
 attr(d$phy_sleepy, "label") <- "I am sleepy."
 
 
+# Activity items -----------
 
 # act_what1
 d$act_what1 <- factor(d$act_what1,
@@ -411,6 +423,9 @@ d$phy_physact <- labelled(d$phy_physact,
                          labels = c("not" = 1, "very" = 7))
 attr(d$phy_physact, "label") <- "From the last beep onwards I was physically active"
 
+
+
+# Event items -----------
 
 # event_pleas (recoded to 1-7)
 d$event_pleas <- d$event_pleas + 4
@@ -502,6 +517,8 @@ d$evn_inflmood <- labelled(d$evn_inflmood,
 attr(d$evn_inflmood, "label") <- "Filling in this questionnaire influenced my mood."
 
 
+# Evening diary -----------
+
 # evn_pager
 d$evn_pager <- labelled(d$evn_pager,
                         labels = c("not" = 1, "very" = 7))
@@ -522,6 +539,9 @@ d$evn_med <- factor(d$evn_med,
 attr(d$evn_med, "label") <- "I took my medication today."
 
 
+
+# Morning diary -----------
+
 # mor_asleep
 d$mor_asleep <- factor(d$mor_asleep,
                        levels = 1:8,
@@ -534,7 +554,7 @@ d$mor_asleep <- factor(d$mor_asleep,
                          "60-120 minutes",
                          "120-240 minutes",
                          "240+ minutes"))
-attr(d$mor_asleep, "label") <- "I took my medication today."
+attr(d$mor_asleep, "label") <- "How long did it take me to fall asleep last night?"
 
 
 # mor_nrwakeup
@@ -589,6 +609,8 @@ d$mor_med <- factor(d$mor_med,
 attr(d$mor_med, "label") <- "I took my medication yesterday."
 
 
+# SCL90R -----------
+
 # SCL-90-R dep scale items
 d[grep("SCL.90.R", names(d))] <-
   lapply(d[grep("SCL.90.R", names(d))], function(x) {
@@ -599,30 +621,47 @@ d[grep("SCL.90.R", names(d))] <-
                     "moderately"   = 2,
                     "quite a bit"  = 3,
                     "extremely"    = 4
-                 ))
+                  ))
   })
 
-attr(d$SCL.90.R.14, "label") <- "How much were you bothered by feeling low in energy or slowed down?"
-attr(d$SCL.90.R.20, "label") <- "How much were you bothered by crying easily?"
-attr(d$SCL.90.R.22, "label") <- "How much were you bothered by feeling of being trapped or caught?"
-attr(d$SCL.90.R.5, "label")  <- "How much were you bothered by loss of sexual interest or pleasure?"
-attr(d$SCL.90.R.29,  "label") <- "How much were you bothered by feeling lonely?"
-attr(d$SCL.90.R.26, "label") <- "How much were you bothered by blaming yourself for things??"
-attr(d$SCL.90.R.15, "label") <- "How much were you bothered by thoughts of ending your life?"
-attr(d$SCL.90.R.30, "label") <- "How much were you bothered by feeling blue?"
-attr(d$SCL.90.R.31, "label") <- "How much were you bothered by worrying too much about things?"
-attr(d$SCL.90.R.32, "label") <- "How much were you bothered by feeling no interest in things?"
-attr(d$SCL.90.R.54, "label") <- "How much were you bothered by feeling hopeless about the future?"
-attr(d$SCL.90.R.71, "label") <- "How much were you bothered by feeling everything is an effort?"
-attr(d$SCL.90.R.79, "label") <- "How much were you bothered by feelings of worthlessness?"
+# lowercase variables, stick to _ as delimiter
+names(d)[71:84] = sub("SCL.90.R.", "scl90r_", names(d)[71:84])
+names(d)[74] = "scl90r_05" # consistent double digits
+
+attr(d$scl90r_14, "label") <- "How much were you bothered by feeling low in energy or slowed down?"
+attr(d$scl90r_20, "label") <- "How much were you bothered by crying easily?"
+attr(d$scl90r_22, "label") <- "How much were you bothered by feeling of being trapped or caught?"
+attr(d$scl90r_05, "label") <- "How much were you bothered by loss of sexual interest or pleasure?"
+attr(d$scl90r_29, "label") <- "How much were you bothered by feeling lonely?"
+attr(d$scl90r_26, "label") <- "How much were you bothered by blaming yourself for things??"
+attr(d$scl90r_15, "label") <- "How much were you bothered by thoughts of ending your life?"
+attr(d$scl90r_30, "label") <- "How much were you bothered by feeling blue?"
+attr(d$scl90r_31, "label") <- "How much were you bothered by worrying too much about things?"
+attr(d$scl90r_32, "label") <- "How much were you bothered by feeling no interest in things?"
+attr(d$scl90r_54, "label") <- "How much were you bothered by feeling hopeless about the future?"
+attr(d$scl90r_71, "label") <- "How much were you bothered by feeling everything is an effort?"
+attr(d$scl90r_79, "label") <- "How much were you bothered by feelings of worthlessness?"
 
 
 # dep
-attr(d$dep, "label") <- "Average score on SCL-90-R items."
+names(d)[85] = "scl90r_dep"
+attr(d$scl90r_dep, "label") <- "SCL-90-R depression score"
+
+
+# re-order columns -------------------------------------------------------------
+
+d <- d[c(
+  2:3,        # experiment information
+  4, 1, 5:9,  # when was the data collected?
+  10:85       # measures
+)]
 
 
 # save ------------------------------------------------------------------------
 csd <- d
+
+#
+
 save(file = "data-raw/csd/csd.Rda", csd)
 
 
