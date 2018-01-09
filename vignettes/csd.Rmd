@@ -153,11 +153,11 @@ for(i in 1:nrow(csd)){
 ### Depression
 
 ```{r plot_depression}
-d <- csd %>% filter(!is.na(dep)) %>% select(dayno, dep, phase)
+d <- csd %>% filter(!is.na(scl90r_dep)) %>% select(dayno, scl90r_dep, phase)
 d <- unique(d)
 ggplot(data = d, 
        aes(x = dayno, 
-           y = dep, 
+           y = scl90r_dep, 
            group = 1)) +
   geom_point(aes(color = phase), 
              show.legend = FALSE) + 
