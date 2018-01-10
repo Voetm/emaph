@@ -10,8 +10,8 @@
 #'   \item{\code{concentrat}}{Concentration of anti-depressant.}
 #'   \item{\code{dayno}}{Day number of experiment.}
 #'   \item{\code{beepno}}{Beep sequence number within the day.}
-#'   \item{\code{beeptime}}{Time of presentation of questionnaire.}
 #'   \item{\code{date}}{Measurement date.}
+#'   \item{\code{beeptime}}{Time of presentation of questionnaire.}
 #'   \item{\code{resptime_s}}{Time at start questionnaire.}
 #'   \item{\code{resptime_e}}{Time at end questionnaire.}
 #'   \item{\code{resp_abort}}{Questionnaire aborted (yes/no)?}
@@ -90,7 +90,7 @@
 #'   \item{\code{scl90r_54}}{SCL-90-R item 54: 'How much were you bothered by feeling hopeless about the future?'}
 #'   \item{\code{scl90r_71}}{SCL-90-R item 71: 'How much were you bothered by feeling everything is an effort?'}
 #'   \item{\code{scl90r_79}}{SCL-90-R item 79: 'How much were you bothered by feelings of worthlessness?'}
-#'   \item{\code{dep}}{SCL-90-R: Depression score (mean of item scores).}
+#'   \item{\code{scl90r_dep}}{SCL-90-R: Depression score (mean of item scores).}
 #' }
 #'
 #' @details Data retrieved from single participant.

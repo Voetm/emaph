@@ -626,7 +626,7 @@ d[grep("SCL.90.R", names(d))] <-
 
 # lowercase variables, stick to _ as delimiter
 names(d)[71:84] = sub("SCL.90.R.", "scl90r_", names(d)[71:84])
-names(d)[74] = "scl90r_05" # consistent double digits
+names(d)[75] = "scl90r_05" # consistent double digits
 
 attr(d$scl90r_14, "label") <- "How much were you bothered by feeling low in energy or slowed down?"
 attr(d$scl90r_20, "label") <- "How much were you bothered by crying easily?"
@@ -651,9 +651,9 @@ attr(d$scl90r_dep, "label") <- "SCL-90-R depression score"
 # re-order columns -------------------------------------------------------------
 
 d <- d[c(
-  2:3,        # experiment information
-  4, 1, 5:9,  # when was the data collected?
-  10:85       # measures
+  2:3,          # experiment information
+  4:5, 1, 6:9,  # when was the data collected?
+  10:85         # measures
 )]
 
 
