@@ -4,10 +4,6 @@
 \name{csd}
 \alias{csd}
 \title{Data from the 'Critical Slowing Down'-Study.}
-<<<<<<< HEAD
-
-=======
->>>>>>> 12d41c39139aa57d6d1b37145f641c710753d028
 \format{A data frame with 1476 observations on the following 85 variables:
 \describe{
   \item{\code{phase}}{Phase of experiment.}
@@ -96,10 +92,6 @@
   \item{\code{scl90r_79}}{SCL-90-R item 79: 'How much were you bothered by feelings of worthlessness?'}
   \item{\code{dep}}{SCL-90-R: Depression score (mean of item scores).}
 }}
-<<<<<<< HEAD
-
-=======
->>>>>>> 12d41c39139aa57d6d1b37145f641c710753d028
 \source{
 \url{https://osf.io/j4fg8/}
 }
