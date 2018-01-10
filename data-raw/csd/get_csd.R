@@ -28,11 +28,10 @@ d$phase = factor(d$phase,
                  levels = 1:5,
                  labels = c(
                    "baseline",
-                   "double blind before reducing medication",
-                   "double blind during medication reduction",
-                   "phase after medication reduction",
-                   "phase after experiment"
-
+                   "exp: no change",
+                   "exp: reduce",
+                   "exp: zero",
+                   "follow-up"
                  ))
 attr(d$phase, "label") <- "Various phases in experiment"
 
@@ -180,6 +179,8 @@ d$pat_concent <- labelled(d$pat_concent,
                           labels = c("not" = 1, "very" = 7))
 attr(d$pat_concent, "label") <- "I can concentrate well"
 
+
+# self-esteem -------
 
 # se_selflike
 d$se_selflike <- labelled(d$se_selflike,
