@@ -27,10 +27,10 @@ d <- d[-1]
 d$phase = factor(d$phase,
                  levels = 1:5,
                  labels = c(
-                   "baseline",
-                   "exp: no change",
-                   "exp: reduce",
-                   "exp: zero",
+                   "exp: baseline",
+                   "exp: db: no change",
+                   "exp: db: reduce AD",
+                   "exp: posttest",
                    "follow-up"
                  ))
 attr(d$phase, "label") <- "Various phases in experiment"
