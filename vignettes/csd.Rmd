@@ -32,7 +32,6 @@ library(tidyverse)
 ## Summary
 
 This vignette aims to replicate results published in @Wichers2016.
-Test Lisa 
 
 ## Preliminaries
 
