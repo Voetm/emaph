@@ -2,7 +2,7 @@
 % Please edit documentation in R/sim_ema.R
 \name{sim_ema}
 \alias{sim_ema}
-\title{Generate a signal-contingent EMA sampling plan}
+\title{Simulate EMA data}
 \usage{
 sim_ema(n_participants = 5, n_days = 7, times = c("08:00-10:00", "12:30",
   "17:00-19:00"), plot = FALSE, intercept = 0, intercept_var = 0,
@@ -42,11 +42,19 @@ point is chosen, per participant, in the designated period.}
 a data.frame, containing the simulated data.
 }
 \description{
-Generate a signal-contingent EMA sampling plan
+Simulate EMA data
 }
 \examples{
-a <- sim_ema(slope = -0.05,slope_var = 0.0005, slope2 = 0, slope2_var = 0)
-b <- sim_ema(slope = -0.5, slope_var = 0.0005, slope2 = 0.02, slope2_var = 0)
+a <- sim_ema(n_participants = 20,
+             intercept_var = 0.05,
+             slope = -0.05,
+             slope_var = 0.0005)
+b <- sim_ema(n_participants = 20,
+             intercept_var = 0.05,
+             slope = -0.5,
+             slope_var = 0.0005,
+             slope2 = 0.02,
+             slope2_var = 0)
 b$id <- b$id + max(a$id)
 
 c <- rbind(a, b)

@@ -27,9 +27,11 @@
 #'
 #' @examples
 #' a <- sim_ema(n_participants = 20,
+#'              intercept_var = 0.05,
 #'              slope = -0.05,
 #'              slope_var = 0.0005)
 #' b <- sim_ema(n_participants = 20,
+#'              intercept_var = 0.05,
 #'              slope = -0.5,
 #'              slope_var = 0.0005,
 #'              slope2 = 0.02,
