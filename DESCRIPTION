@@ -9,11 +9,13 @@ Depends: R (>= 3.4.0)
 Imports: tidyverse,
     ggplot2,
     mgcv,
+    simstudy,
     zoo
 License: file LICENCE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Suggests: knitr,
+    nlme,
     rmarkdown,
 VignetteBuilder: knitr
