@@ -23,7 +23,7 @@
 #'   error  = 0.2,
 #'   phi    = 0.5
 #' )
-#' a <- sim_ema(sample_plan = sample_plan,
+#' a <- sim_ema(plan = sample_plan,
 #'              mm_par = mm_par_a)
 #'
 #' mm_par_b <- mm_par_a
@@ -31,7 +31,7 @@
 #' mm_par_b$fixed['time2']  <- 0.02
 #' mm_par_b$random['time']  <- 0.005
 #'
-#' b <- sim_ema(sample_plan = sample_plan,
+#' b <- sim_ema(plan = sample_plan,
 #'              mm_par = mm_par_b)
 #'
 #' b$id <- b$id + max(a$id)
@@ -57,7 +57,7 @@
 #' summary(fm)
 #'
 
-sim_ema <- function(sample_plan = sample_plan(),
+sim_ema <- function(plan = sample_plan(),
                     mm_par = list(
                       fixed  = c(intercept = 0,
                                  time      = 0,
@@ -71,9 +71,9 @@ sim_ema <- function(sample_plan = sample_plan(),
 
 
   # data will be stored in d -------
-  d <- sample_plan
+  d <- plan
   n_participants <- length(unique(d$id))
-  n_timepoints <- max(sample_plan$observation)
+  n_timepoints <- max(plan$observation)
 
   # check mm_par ------------------
   mm_default_par <- list(
