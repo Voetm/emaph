@@ -15,11 +15,9 @@
 #'
 #' mm_par_a <- list(
 #'   fixed  = c(intercept = 0,
-#'              time      = 0,
-#'              time2     = 0),
+#'              time      = 0),
 #'   random = c(intercept = 0.1,
-#'              time      = 0.005,
-#'              time2     = 0.000001),
+#'              time      = 0.005),
 #'   error  = 0.2,
 #'   phi    = 0.5
 #' )
@@ -28,7 +26,6 @@
 #'
 #' mm_par_b <- mm_par_a
 #' mm_par_b$fixed['time']   <- -0.5
-#' mm_par_b$fixed['time2']  <- 0.02
 #' mm_par_b$random['time']  <- 0.005
 #'
 #' b <- sim_ema(plan = sample_plan,
@@ -50,26 +47,29 @@
 #'
 #' # test
 #' library(nlme)
-#' fm <- lme(Y ~ 1 + (time + I(time^2)) * group ,
-#'          random = ~ 1 + time + I(time^2) | id,
+#' fm <- lme(Y ~ 1 + time * group ,
+#'          random = ~ 1 + time | id,
 #'          data = c,
 #'          correlation = corAR1())
 #' summary(fm)
 #'
-
+#'
 sim_ema <- function(plan = sample_plan(),
                     mm_par = list(
-                      fixed  = c(intercept = 0,
-                                 time      = 0,
-                                 time2     = 0),
-                      random = c(intercept = 0,
-                                 time      = 0,
-                                 time2     = 0),
+                      fixed  = c(
+                        intercept = 0,
+                        time      = 0,
+                        time2     = 0
+                      ),
+                      random = c(
+                        intercept = 0,
+                        time      = 0,
+                        time2     = 0
+                      ),
                       error  = 0.02,
                       phi    = 0
-                    )) {
-
-
+                    ),
+                    lim = NULL) {
   # data will be stored in d -------
   d <- plan
   n_participants <- length(unique(d$id))
@@ -77,30 +77,37 @@ sim_ema <- function(plan = sample_plan(),
 
   # check mm_par ------------------
   mm_default_par <- list(
-    fixed  = c(intercept = 0,
-               time      = 0,
-               time2     = 0),
-    random = c(intercept = 0,
-               time      = 0,
-               time2     = 0),
+    fixed  = c(
+      intercept = 0,
+      time      = 0,
+      time2     = 0
+    ),
+    random = c(
+      intercept = 0,
+      time      = 0,
+      time2     = 0
+    ),
     error  = 0.02,
     phi    = 0
   )
-  if (is.null(mm_par)) mm_par <- mm_default_par
-  if (is.null(mm_par$fixed)) mm_par$fixed <- mm_default_par$fixed
-  if (is.null(mm_par$fixed["intercept"]))
+  if (is.null(mm_par))
+    mm_par <- mm_default_par
+  if (is.null(mm_par$fixed))
+    mm_par$fixed <- mm_default_par$fixed
+  if (is.na(mm_par$fixed["intercept"]))
     mm_par$fixed["intercept"] <- mm_default_par$fixed["intercept"]
-  if (is.null(mm_par$fixed["time"]))
+  if (is.na(mm_par$fixed["time"]))
     mm_par$fixed["time"] <- mm_default_par$fixed["time"]
-  if (is.null(mm_par$fixed["time2"]))
+  if (is.na(mm_par$fixed["time2"]))
     mm_par$fixed["time2"] <- mm_default_par$fixed["time2"]
 
-  if (is.null(mm_par$random)) mm_default_par$random
+  if (is.null(mm_par$random))
+    mm_par$random <- mm_default_par$random
   if (is.null(mm_par$random["intercept"]))
     mm_par$random["intercept"] <- mm_default_par$random["intercept"]
-  if (is.null(mm_par$random["time"]))
-    mm_par$fixed["time"] <- mm_default_par$random["time"]
-  if (is.null(mm_par$random["time2"]))
+  if (is.na(mm_par$random["time"]))
+    mm_par$random["time"] <- mm_default_par$random["time"]
+  if (is.na(mm_par$random["time2"]))
     mm_par$random["time2"] <- mm_default_par$random["time2"]
 
   if (is.null(mm_par$error))
@@ -149,7 +156,7 @@ sim_ema <- function(plan = sample_plan(),
 
   # correlated errors
   mu <- rep(0, n_timepoints)                # mean zero
-  sigma <- rep(mm_par$error, n_timepoints)  # variance
+  sigma <- rep(sqrt(mm_par$error), n_timepoints)  # variance
 
   dtCor <-
     genCorData(
@@ -204,11 +211,10 @@ sim_ema <- function(plan = sample_plan(),
   d$Y <- longData$Y
   d$id <- as.numeric(d$id)
 
+  if (!is.null(lim)) {
+    d$Y[d$Y < min(lim)] <- min(lim)
+    d$Y[d$Y > max(lim)] <- max(lim)
+  }
+
   d
 }
-
-
-
-
-
-
