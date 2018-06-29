@@ -3,13 +3,15 @@ Title: Ecological Momentary Assessment Datasets and Utility Functions
 Version: 0.5.0
 Authors@R: person("Jeroen", "Ruwaard", email = "jeroen.ruwaard@ggzingeest.nl", 
     role = c("aut", "cre"))
-Description: Provides example data of EMA research, and utility functions to
-    simulate and analyse EMA data.
+Description: Provides Ecological Momentary Assessment (EMA) data sets and 
+    utility functions.
 Depends: R (>= 3.4.0)
 Imports: tidyverse,
     ggplot2,
+    jsonlite,
     mgcv,
     simstudy,
+    readr,
     zoo
 License: file LICENCE
 Encoding: UTF-8
