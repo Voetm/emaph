@@ -1,0 +1,45 @@
+#' Import Google GPS Location TimeLine
+#'
+#' Import a JSON Google GPS Location History into R.
+#'
+#' @param file a ".json" file, containing a Google location history.
+#' @return a \code{data.frame}, with variables:
+#'   \itemize{
+#'     \item{id}{Participant identifier}
+#'     \item{TimeStamp}{Datetime of measurement (POSICxt)}
+#'     \item{lat}{GPS Latitude}
+#'     \item{lon}{GPS Longitude}
+#'     \item{accuracy}{Accuracy of location (in meters)}
+#'   }
+#'
+#' @importFrom jsonlite fromJSON
+#' @importFrom readr read_file
+#'
+#' @export
+#'
+#' @examples
+#'
+#' example_json <- system.file("extdata", "google_timeline_sample.json",
+#'                            package = "emaph")
+#' d <- get_google_location_data(example_json)
+#' head(d)
+#'
+get_google_location_data <- function(file = NULL) {
+
+  # parse json file
+  jsondata <- readr::read_file(file)
+  gdat <- jsonlite::fromJSON(jsondata)
+  locs <- gdat$locations
+
+  d <- data.frame(TimeStamp = as.numeric(locs$timestampMs) / 1000)
+  d$TimeStamp <- as.POSIXct(d$TimeStamp, origin = "1970-01-01")
+
+  d$lat <- locs$latitudeE7 / 1e7   # E7 -> GPS
+  d$lon <- locs$longitudeE7 / 1e7
+  d$accuracy <- locs$accuracy
+
+  d
+}
+
+
+
