@@ -1,22 +1,18 @@
 #' GPS data
 #'
-#' @description a Google timelie GPS dataset of a single participant.
+#' @description A Google timeline GPS dataset, containing data of two
+#'     participants.
 #'
-#' @format A data frame with 587840 observations on the following 6 variables:
+#' @format A data frame with 39438 observations on 4 variables:
 #' \describe{
-#'   \item{\code{TimeStamp}}{Datetime of measurement}
-#'   \item{\code{lat}}{GPS Latitude}
-#'   \item{\code{lon}}{GPS Longitude}
-#'   \item{\code{accuracy}}{GPS estimated accuracy (in meters)}
-#'   \item{\code{activity}}{Activity prediction}
-#'   \item{\code{activity_confidence}}{Altitude (in meters)}
-#'   \item{\code{velocity}}{Velocity (in km per hour)}
-#'   \item{\code{altitude}}{Altitude (in meters)}
+#'   \item{\code{id}}{Participant identifier (integer)}
+#'   \item{\code{TimeStamp}}{Datetime of measurement (POSIXct)}
+#'   \item{\code{lat}}{GPS Latitude (numeric)}
+#'   \item{\code{lon}}{GPS Longitude (numeric)}
+#'   \item{\code{accuracy}}{Estimated GPS accuracy (in meters)}
 #' }
 #'
-#' @details Data retrieved from single participant.
-#'
-#' @source \url{jruwaard.nl}
+#' @source Jeroen Ruwaard, Lisa Kooistra
 #'
 #' @docType data
 #' @keywords datasets
