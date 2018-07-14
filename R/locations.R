@@ -1,0 +1,40 @@
+#' locations
+#'
+#' @description Four-week Google location histories of two
+#'    Dutch persons living in the Amsterdam area.
+#'
+#' @format A data frame with 14.753 observations on 4 variables:
+#' \describe{
+#'   \item{\code{id}}{Person id (integer)}
+#'   \item{\code{timestamp}}{Datetime of measurement (POSIXct)}
+#'   \item{\code{lat}}{Latitude (numeric)}
+#'   \item{\code{lon}}{Longitude (numeric)}
+#'   \item{\code{accuracy}}{Estimated GPS accuracy (in meters; smaller is better)}
+#' }
+#'
+#' @source https://takeout.google.com/settings/takeout/custom/location_history
+#'
+#' @seealso get_google_location_data
+#'
+#' @docType data
+#' @keywords datasets
+#'
+#' @examples
+#' # number of assessments
+#' nrow(locations)
+#'
+#' # number of assessments, per person
+#' table(locations$id)
+#'
+#' library(ggplot2)
+#' d <-  subset(locations,
+#'              accuracy <= 100 &
+#'              lon >=  4.80 & lon <=  5.00 &
+#'              lat >= 52.25 & lat <= 52.50)
+#'
+#' ggplot(d, aes(lon, lat)) +
+#'   geom_point(alpha = .1,  shape = 21, size = 3) +
+#'   facet_wrap(~ id)
+#'
+"locations"
+
