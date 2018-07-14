@@ -13,9 +13,7 @@
 #'   \item{\code{score}}{item score}
 #' }
 #'
-#' @details Data retrieved from healthy subjects.
-#'
-#' @source Wouter van Ballegooijen / Chani Nuij
+#' @source Wouter van Ballegooijen / Chani Nuij / Jeroen Ruwaard
 #'
 #' @docType data
 #' @keywords datasets
