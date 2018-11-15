@@ -1,10 +1,12 @@
 Package: emaph
-Title: Ecological Momentary Assessment Datasets and Utility Functions
-Version: 0.5.0
+Title: The accompanying R package of the manual "Ecological Momentary Assessment in Mental Health Research"
+Version: 1.0.0
 Authors@R: person("Jeroen", "Ruwaard", email = "jeroen.ruwaard@ggzingeest.nl", 
     role = c("aut", "cre"))
-Description: Provides Ecological Momentary Assessment (EMA) data sets and 
-    utility functions.
+Description: Provides data sets and utility functions that are used in the 
+    research manual "Ecological Momentary Assessment in Mental Health 
+    Research: A Practical Introduction, with Examples in R" 
+    (https://jruwaard.github.io/aph_ema_handbook/).
 Depends: R (>= 3.4.0)
 Imports: tidyverse,
     ggplot2,
@@ -16,7 +18,7 @@ Imports: tidyverse,
 License: file LICENCE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0.9000
 Suggests: knitr,
     nlme,
     rmarkdown,
