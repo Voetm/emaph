@@ -14,6 +14,8 @@ Imports: tidyverse,
     mgcv,
     simstudy,
     readr,
+    stats,
+    tidyr,
     zoo
 License: file LICENCE
 Encoding: UTF-8

@@ -2,10 +2,9 @@
 #'
 #' @param seed random seed.
 #' @param n_measurements_per_day number of data points per day.
-#' @param n_days number of days.
+#' @param n_days assessment period (in days).
 #' @param m mean at start (first element) and end (second element) of s.
-#' @param sd sd at start (first element) and end (second element) of s.
-#' @param trend regression slope of s.
+#' @param sdev sd at start (first element) and end (second element) of s.
 #' @param ampl amplitude of circadian rhythms (1-day, 7-day period) in s.
 #' @param range min, max range of s.
 #' @param missingness_prob minimal and maximal missingness probability of s.
@@ -58,7 +57,7 @@ generate_features_dataset <- function(seed = NULL,
     s + 0.5 * seq(ampl[1], ampl[2], length.out = n) * sin(1 / 7 * t * 2 * pi) # week
 
   # mean + trend + sd
-  s <- s + rnorm(
+  s <- s + stats::rnorm(
     n,
     mean = seq(m[1], m[2], length.out = n),
     sd =  seq(sdev[1], sdev[2], length.out = n)
@@ -67,14 +66,17 @@ generate_features_dataset <- function(seed = NULL,
   # autocorrelation component
   amount = 1
   s <-
-    s + amount * arima.sim(model = list(ar = autocorrelation), n = n)
+    s + amount * stats::arima.sim(model = list(ar = autocorrelation), n = n)
 
   # missingness
-  m1 <-
-    rbinom(n,
-           1,
-           seq(missingness_prob[1], missingness_prob[2], length.out = n))
-  s[m1 == 1] <- NA
+  missings <-
+    stats::rbinom(
+           n = n,
+           size = 1,
+           prob = seq(from = missingness_prob[1],
+                      to = missingness_prob[2],
+                      length.out = n))
+  s[missings == 1] <- NA
 
   # in range
   s[s > range[2]] <- range[2]
