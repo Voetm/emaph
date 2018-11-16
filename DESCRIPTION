@@ -1,6 +1,7 @@
 Package: emaph
 Title: The accompanying R package of the manual "Ecological Momentary Assessment in Mental Health Research"
 Version: 1.0.0
+Date: 2018-11-17
 Authors@R: person("Jeroen", "Ruwaard", email = "jeroen.ruwaard@ggzingeest.nl", 
     role = c("aut", "cre"))
 Description: Provides data sets and utility functions that are used in the 
