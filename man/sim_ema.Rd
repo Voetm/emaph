@@ -19,14 +19,12 @@ which case data values are unbounded).}
 }
 \value{
 a \code{data.frame}, containing the simulated data:
-   \itemize{
      \item{id}{Participant id (numeric)}
      \item{observation}{observation counter (within participant; numeric)}
      \item{day}{day counter (numeric)}
      \item{beep}{beep counter, within day (numeric)}
      \item{t}{time of day (string, in "\%H:\%M" format)}
      \item{Y}{Simulated EMA value}
-   }
 }
 \description{
 Simulate EMA data
