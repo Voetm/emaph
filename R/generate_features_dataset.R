@@ -11,7 +11,8 @@
 #' @param autocorrelation strength of autocorrelation component in s.
 #' @param plot if TRUE, the series is plotted (s ~ t). Default is FALSE.
 #'
-#' @return a data.frame, containing the generate timeseries
+#' @return a data.frame, containing the generated timeseries, with time
+#' in column t and the signal in column s.
 #'
 #' @import ggplot2
 #'
