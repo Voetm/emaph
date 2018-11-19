@@ -31,7 +31,8 @@ generate_features_dataset(seed = NULL, n_measurements_per_day = 5,
 \item{plot}{if TRUE, the series is plotted (s ~ t). Default is FALSE.}
 }
 \value{
-a data.frame, containing the generate timeseries
+a data.frame, containing the generated timeseries, with time
+in column t and the signal in column s.
 }
 \description{
 Generate time series used in "Feature Extraction"-chapter of the manual.
